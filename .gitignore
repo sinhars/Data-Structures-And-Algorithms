@@ -133,3 +133,6 @@ dmypy.json
 
 # Coursera content folder
 ~Coursera-Content/
+
+# VS Code settings folder
+.vscode/

@@ -1,7 +1,6 @@
 # Uses python3
 import sys
 import numpy as np
-from numpy.core.numeric import full
 
 def get_fibonacci_huge_naive(n, m):
     if n <= 1:

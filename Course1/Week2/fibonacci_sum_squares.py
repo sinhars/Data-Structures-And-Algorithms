@@ -24,6 +24,28 @@ def fibonacci_sum_squares_fast(n):
         sum_sq_last_digit %= 10
     return (sum_sq_last_digit)
 
+def fibonacci_sum_squares_faster(n):
+    all_fib_last = []
+    all_sums = []
+    full_pattern = False
+    for i in range(n + 1):
+        last_ = i if (i <= 1) else ((all_fib_last[i-1] + all_fib_last[i-2]) % 10)
+        sum_ = i if (i <= 1) else ((all_sums[i-1] + (last_ ** 2)) % 10)
+        all_fib_last.append(last_)
+        all_sums.append(sum_)
+        if (i >= 2) & (all_sums[i - 1] == 0) & (all_sums[i] == 1):
+            full_pattern = True
+            break
+    sum_last_digits = None
+    if full_pattern:
+        all_sums.pop()
+        all_sums.pop()
+        pos = n % len(all_sums)
+        sum_last_digits = all_sums[pos]
+    else:
+        sum_last_digits = all_sums[len(all_sums) - 1]
+    return (sum_last_digits)   
+
 if __name__ == '__main__':
     n = int(stdin.readline())
-    print(fibonacci_sum_squares_fast(n))
+    print(fibonacci_sum_squares_faster(n))

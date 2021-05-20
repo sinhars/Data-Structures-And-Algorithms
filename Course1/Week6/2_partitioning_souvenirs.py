@@ -25,7 +25,8 @@ def get_items_used(sum_map, optimal_sum, verbose=False):
 
 def fast_partition3(A, verbose=False):
     total = sum(A)
-    if total % 3 == 0:        
+    A.sort()
+    if total % 3 == 0:
         sum_map = [[0 for _ in range(total + 1)] for _ in range(len(A) + 1)]
         for i in range(1, len(sum_map)):
             item = A[i - 1]
@@ -33,13 +34,11 @@ def fast_partition3(A, verbose=False):
                 sum_map[i][j] = sum_map[i - 1][j]
                 if item <= j:
                     new_val = sum_map[i - 1][j - item] + item
-                    if new_val >= sum_map[i][j]:
+                    if new_val > sum_map[i][j]:
                         sum_map[i][j] = new_val
         if verbose:
             for i in range(len(sum_map)):
                 print(sum_map[i])
-        
-        # if sum_map has all 3 summations (total//3, 2*total//3, total) - return 1
 
     return 0
 

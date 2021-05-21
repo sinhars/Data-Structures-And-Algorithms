@@ -12,8 +12,7 @@ def optimal_weight(W, w):
                 if res[i][j] < v:
                     res[i][j] = v
     
-    # for i in range(len(res)):
-    #     print(res[i])
+    # print(pd.DataFrame(res, index=([0] + w)))
     
     result = res[-1][-1]
     return (result)
